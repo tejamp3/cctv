@@ -24,7 +24,7 @@ def parse_args():
         "--line-y",
         type=int,
         default=None,
-        help="Horizontal line y-coordinate in pixels; defaults to half the frame height",
+        help="Horizontal line y-coordinate in pixels; defaults to 40% of the frame height",
     )
     parser.add_argument(
         "--conf", type=float, default=0.30, help="Person detection confidence threshold"
@@ -45,7 +45,7 @@ def main():
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    line_y = args.line_y if args.line_y is not None else height // 2
+    line_y = args.line_y if args.line_y is not None else int(height * 0.4)
     if not 0 < line_y < height:
         print(f"ERROR: --line-y must be between 0 and {height}")
         sys.exit(1)

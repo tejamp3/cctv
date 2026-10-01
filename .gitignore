@@ -2,3 +2,17 @@ venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# Runtime job data (uploads/outputs from video analysis jobs) — regenerable, not source
+runtime/
+
+# Training dataset (90k images, ~900MB) — regenerable via prepare_pa100k.py
+gender_dataset/
+
+# Stock pretrained weights — publicly downloadable from Ultralytics, not project-specific
+yolov8m.pt
+yolov8n-cls.pt
+
+# Large sample/output videos
+foot2_boxed.mp4
+*.mp4
