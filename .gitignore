@@ -11,6 +11,8 @@ gender_dataset/
 
 # Stock pretrained weights — publicly downloadable from Ultralytics, not project-specific
 yolov8m.pt
+yolov8n.pt
+yolov8s.pt
 yolov8n-cls.pt
 
 # Large sample/output videos

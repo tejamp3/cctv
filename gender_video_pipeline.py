@@ -2,22 +2,20 @@
 gender_video_pipeline.py
 
 Runs the full pipeline on a video and writes an annotated ("boxed") output video:
-  1. YOLOv8 detects + tracks people frame-by-frame (persistent IDs, same as extract_crops.py)
+  1. YOLOv8 detects + tracks people frame-by-frame (persistent IDs).
   2. Every N frames, each tracked person's current crop is classified by the
-     HF gender model (NTQAI/pedestrian_gender_recognition)
-  3. Predictions per track are averaged over time so the label doesn't flicker
+     local gender classifier (see --gender-model, default
+     gender_models/pa100k_yolov8n_cls.pt — a YOLOv8-nano classifier trained
+     on PA-100K; see train_gender_classifier.py).
+  3. Predictions per track are averaged over time so the label doesn't flicker.
   4. Every frame gets boxes drawn + label (Male/Female + confidence) for each
      currently-tracked person, and is written to an output video file.
 
 Usage:
-    python gender_video_pipeline.py --video foot1.mp4 --output foot1_boxed.mp4
+    python gender_video_pipeline.py --video path/to/video.mp4 --output out.mp4
 
-Drop this file in the same folder as extract_crops.py / yolov8s.pt in your repo
-and run it in your existing `gender-classifier` conda env (it already has
-ultralytics-compatible deps: torch, transformers, opencv-python-headless).
-
-If `ultralytics` isn't installed yet:
-    pip install ultralytics
+Dependencies are listed in requirements.txt (install with
+`pip install -r requirements.txt`).
 """
 
 import argparse
