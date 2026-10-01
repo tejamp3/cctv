@@ -47,7 +47,7 @@ Not committed to git (regenerable or external — see `.gitignore`):
 - `yolov8m.pt`, `yolov8n-cls.pt` — stock Ultralytics pretrained weights; auto-downloaded on first use
 - sample/output `*.mp4` files
 
-## Getting started — step by step (no coding experience needed)
+## Getting started — step by step
 
 This walks through everything from an empty Windows machine to the dashboard open in
 your browser. It looks long because every step is spelled out — in practice it's about
